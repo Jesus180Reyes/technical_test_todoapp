@@ -20,5 +20,17 @@ final appRouter = GoRouter(
       path: "/profile",
       builder: (context, state) => const ProfileScreen(),
     ),
+    GoRoute(
+      path: "/todos-pending",
+      builder: (context, state) => const TodosPendingScreen(),
+    ),
+    GoRoute(
+      path: "/todos-inProgress",
+      builder: (context, state) => const TodosInProgressScreen(),
+    ),
+    GoRoute(
+      path: "/todos-done",
+      builder: (context, state) => const TodosDoneScreen(),
+    ),
   ],
 );

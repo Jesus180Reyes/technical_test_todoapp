@@ -3,12 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:tecnical_test_todo_app/config/router/app_router.dart';
 import 'package:tecnical_test_todo_app/config/themes/app_theme.dart';
 import 'package:tecnical_test_todo_app/presentation/services/auth/auth_services.dart';
+import 'package:tecnical_test_todo_app/presentation/services/todos/todos_services.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthServices()),
+        ChangeNotifierProvider(create: (_) => TodoServices()),
       ],
       child: const MyApp(),
     ),

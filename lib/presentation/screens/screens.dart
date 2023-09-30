@@ -1,3 +1,8 @@
+export 'package:tecnical_test_todo_app/presentation/screens/shared/no_todos_screen.dart';
+export 'package:tecnical_test_todo_app/presentation/screens/shared/loading_screen.dart';
+export 'package:tecnical_test_todo_app/presentation/screens/home/todos_done/todos_done_screen.dart';
+export 'package:tecnical_test_todo_app/presentation/screens/home/todos_inprogress/todos_inprogress_screen.dart';
+export 'package:tecnical_test_todo_app/presentation/screens/home/todos_pending/todos_pending_screen.dart';
 export 'package:tecnical_test_todo_app/presentation/screens/profile/profile_screen.dart';
 export 'package:tecnical_test_todo_app/presentation/screens/auth/register/register_screen.dart';
 export 'package:tecnical_test_todo_app/presentation/screens/auth/login/login_screen.dart';
