@@ -7,7 +7,14 @@ class NoTodosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('No hay todos Registrados, Ingresa uno.'),
+        child: Text(
+          'No hay TODOS Registrados\n Haz Click en + para crear una nueva tarea.',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
       ),
     );
   }

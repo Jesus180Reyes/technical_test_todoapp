@@ -32,5 +32,9 @@ final appRouter = GoRouter(
       path: "/todos-done",
       builder: (context, state) => const TodosDoneScreen(),
     ),
+    GoRoute(
+      path: "/add-todo",
+      builder: (context, state) => const AddTodoScreen(),
+    ),
   ],
 );
