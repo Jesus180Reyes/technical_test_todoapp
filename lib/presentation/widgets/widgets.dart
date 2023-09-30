@@ -1,3 +1,5 @@
+export 'package:tecnical_test_todo_app/presentation/widgets/home/todos_items_widget.dart';
+export 'package:tecnical_test_todo_app/presentation/widgets/home/todo_card_widget.dart';
 export 'package:tecnical_test_todo_app/presentation/widgets/auth/register/register_content_widget.dart';
 export 'package:tecnical_test_todo_app/presentation/widgets/shared/custom_button_widget.dart';
 export 'package:tecnical_test_todo_app/presentation/widgets/shared/auth_row_title_widget.dart';
