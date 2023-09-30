@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => context.push("/add-todo"),
         child: const Icon(
           Icons.add,
         ),
@@ -22,11 +22,14 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("TODO App"),
         centerTitle: true,
-        leading: CircleAvatar(
-          child: Text(
-            userProvider.user!.user.nombre.substring(0, 2).toUpperCase(),
-            style: const TextStyle(
-              fontSize: 20,
+        leading: InkWell(
+          onTap: () => context.push("/profile"),
+          child: CircleAvatar(
+            child: Text(
+              userProvider.user!.user.nombre.substring(0, 2).toUpperCase(),
+              style: const TextStyle(
+                fontSize: 20,
+              ),
             ),
           ),
         ),
