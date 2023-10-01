@@ -42,6 +42,8 @@ class _TodosPendingScreenState extends State<TodosPendingScreen> {
             TodosItemsWidget(
               color: Colors.yellow,
               iconData: Icons.pending_actions_outlined,
+              onLongPress: "/todo-details",
+              routeOnTap: "/todo-details",
             ),
           ],
         ),

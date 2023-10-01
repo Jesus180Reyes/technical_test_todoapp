@@ -43,6 +43,8 @@ class _TodosInProgressScreenState extends State<TodosInProgressScreen> {
               color: Colors.blue,
               iconColor: Colors.white,
               iconData: Icons.model_training_outlined,
+              routeOnTap: "/todo-details",
+              onLongPress: "/todo-details",
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tecnical_test_todo_app/entities/responses/todos_response.dart';
 import 'package:tecnical_test_todo_app/presentation/services/todos/todos_services.dart';
@@ -7,11 +8,15 @@ class TodosItemsWidget extends StatelessWidget {
   final Color color;
   final IconData iconData;
   final Color? iconColor;
+  final String routeOnTap;
+  final String onLongPress;
   const TodosItemsWidget({
     super.key,
     required this.color,
     required this.iconData,
     this.iconColor = Colors.black,
+    required this.routeOnTap,
+    required this.onLongPress,
   });
 
   @override
@@ -31,6 +36,8 @@ class TodosItemsWidget extends StatelessWidget {
             color: color,
             iconData: iconData,
             iconColor: iconColor,
+            routeOnTap: routeOnTap,
+            onLongPress: onLongPress,
           );
         },
       ),
@@ -43,17 +50,23 @@ class TodoItem extends StatelessWidget {
   final Color color;
   final Color? iconColor;
   final IconData iconData;
+  final String routeOnTap;
+  final String onLongPress;
   const TodoItem({
     super.key,
     required this.todo,
     required this.color,
     required this.iconData,
     this.iconColor = Colors.black,
+    required this.routeOnTap,
+    required this.onLongPress,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: () => context.push(onLongPress, extra: todo),
+      onTap: () => context.push(routeOnTap, extra: todo),
       title: Text(todo.title),
       subtitle: Text(todo.description),
       leading: CircleAvatar(

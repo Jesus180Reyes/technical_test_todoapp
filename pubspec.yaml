@@ -40,6 +40,7 @@ dependencies:
   http: ^1.1.0
   jwt_decoder: ^2.0.1
   flutter_secure_storage: ^9.0.0
+  custom_pop_up_menu: ^1.2.4
 
 dev_dependencies:
   flutter_test:

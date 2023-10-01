@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:provider/provider.dart';
+import 'package:tecnical_test_todo_app/entities/entities.dart';
 import 'package:tecnical_test_todo_app/presentation/screens/screens.dart';
 import 'package:tecnical_test_todo_app/presentation/services/auth/auth_services.dart';
 
@@ -50,6 +51,13 @@ final appRouter = GoRouter(
     GoRoute(
       path: "/add-todo",
       builder: (context, state) => const AddTodoScreen(),
+    ),
+    GoRoute(
+      path: "/todo-details",
+      builder: (context, state) {
+        final todo = state.extra as Todo;
+        return TodoDetailsScreen(todo: todo);
+      },
     ),
   ],
 );
