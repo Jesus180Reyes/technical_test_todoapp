@@ -43,6 +43,8 @@ class _TodosDoneScreenState extends State<TodosDoneScreen> {
               color: Colors.green,
               iconColor: Colors.white,
               iconData: Icons.done_rounded,
+              routeOnTap: "/todo-details",
+              onLongPress: "/tood-details",
             ),
           ],
         ),

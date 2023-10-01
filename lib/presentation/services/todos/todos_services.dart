@@ -67,4 +67,32 @@ class TodoServices extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+  Future<void> deleteTodoById() async {}
+  Future<void> updateTodoStatus(
+      {required int todoId, required String status}) async {
+    final token = await _storage.read(key: "x-token");
+    final headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+      "x-token": token!,
+    };
+    const url = "${Env.baseUrl}/todo";
+    final Map<String, dynamic> body = {
+      "id": todoId,
+      "status": status,
+    };
+
+    isLoading = true;
+    notifyListeners();
+    final resp = await http.put(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonEncode(body),
+    );
+    print(resp.body);
+    isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> updateTodoContain() async {}
 }
