@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:tecnical_test_todo_app/config/helpers/custom_dialog.dart';
 import 'package:tecnical_test_todo_app/presentation/services/auth/auth_services.dart';
 
 import '../../widgets.dart';
@@ -12,7 +15,7 @@ class LoginContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginProvider = Provider.of<AuthServices>(context);
+    final loginProvider = Provider.of<AuthServices>(context, listen: false);
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     return SafeArea(
@@ -34,11 +37,17 @@ class LoginContentWidget extends StatelessWidget {
           CustomButtonWidget(
             title: 'Inicia Sesion',
             onPressed: () async {
-              await loginProvider.loginUser(
+              bool isLoginOk = await loginProvider.loginUser(
                 email: emailController.text.trim(),
                 password: passwordController.text.trim(),
               );
-              // ignore: use_build_context_synchronously
+              if (!isLoginOk) {
+                cuatomDialog(
+                    context: context,
+                    titulo: "Error de Autenticacion",
+                    subtitulo: loginProvider.errorMsg);
+                return;
+              }
               context.pushReplacement("/");
             },
           ),

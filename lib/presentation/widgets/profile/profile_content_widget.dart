@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tecnical_test_todo_app/presentation/services/auth/auth_services.dart';
 
@@ -10,6 +11,7 @@ class ProfileContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthServices>(context).user!.user;
+    final authProvider = Provider.of<AuthServices>(context);
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
@@ -51,12 +53,16 @@ class ProfileContentWidget extends StatelessWidget {
                 color: Colors.black54,
               ),
             ),
-            child: const ListTile(
-              title: Text(
+            child: ListTile(
+              onTap: () {
+                authProvider.logOut();
+                context.pushReplacement("/auth/login");
+              },
+              title: const Text(
                 "Cerrar Sesion",
               ),
-              leading: Icon(Icons.logout),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
+              leading: const Icon(Icons.logout),
+              trailing: const Icon(Icons.arrow_forward_ios_sharp),
             ),
           )
         ],

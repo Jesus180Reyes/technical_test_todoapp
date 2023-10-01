@@ -6,6 +6,7 @@ class CustomTextfieldWidget extends StatelessWidget {
   final String hintText;
   final bool? isPassword;
   final IconData icon;
+  final int? maxlines;
   const CustomTextfieldWidget({
     super.key,
     this.textInputType = TextInputType.text,
@@ -13,6 +14,7 @@ class CustomTextfieldWidget extends StatelessWidget {
     this.isPassword = false,
     required this.icon,
     this.controller,
+    this.maxlines = 1,
   });
 
   @override
@@ -31,6 +33,7 @@ class CustomTextfieldWidget extends StatelessWidget {
         controller: controller,
         keyboardType: textInputType,
         obscureText: isPassword!,
+        maxLines: maxlines,
         decoration: InputDecoration(
           hintText: hintText,
           icon: Icon(icon),

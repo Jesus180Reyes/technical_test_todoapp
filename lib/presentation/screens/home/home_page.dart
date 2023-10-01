@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<AuthServices>(context);
+    final userProvider = Provider.of<AuthServices>(context, listen: false);
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
