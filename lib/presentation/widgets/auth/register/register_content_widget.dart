@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:tecnical_test_todo_app/config/helpers/custom_dialog.dart';
 import 'package:tecnical_test_todo_app/presentation/services/auth/auth_services.dart';
 
 import '../../widgets.dart';
@@ -40,12 +43,20 @@ class RegisterContentWidget extends StatelessWidget {
         CustomButtonWidget(
           title: 'Crear Cuenta',
           onPressed: () async {
-            await createUserProvider.createUser(
+            final isRegisterOk = await createUserProvider.createUser(
               nombre: nameController.text.trim(),
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
             );
-            // ignore: use_build_context_synchronously
+            if (!isRegisterOk) {
+              cuatomDialog(
+                context: context,
+                titulo: "Error de Autenticacion",
+                subtitulo: createUserProvider.errorMsg,
+              );
+              return;
+            }
+
             context.pushReplacement("/");
           },
         ),

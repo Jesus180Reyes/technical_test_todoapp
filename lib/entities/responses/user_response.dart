@@ -13,24 +13,24 @@ String userResponseToJson(UserResponse data) => json.encode(data.toJson());
 class UserResponse {
   final bool ok;
   final User user;
-  final String token;
+  final String? token;
 
   UserResponse({
     required this.ok,
     required this.user,
-    required this.token,
+    this.token,
   });
 
   factory UserResponse.fromJson(Map<String, dynamic> json) => UserResponse(
         ok: json["ok"],
         user: User.fromJson(json["user"]),
-        token: json["token"],
+        token: json["token"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
         "ok": ok,
         "user": user.toJson(),
-        "token": token,
+        "token": token ?? "",
       };
 }
 
@@ -38,7 +38,7 @@ class User {
   final int id;
   final String nombre;
   final String email;
-  final String password;
+  final String? password;
   final bool state;
   final int todosCompleted;
   final DateTime createdAt;
@@ -47,7 +47,7 @@ class User {
     required this.id,
     required this.nombre,
     required this.email,
-    required this.password,
+    this.password,
     required this.state,
     required this.todosCompleted,
     required this.createdAt,
@@ -57,7 +57,7 @@ class User {
         id: json["id"],
         nombre: json["nombre"],
         email: json["email"],
-        password: json["password"],
+        password: json["password"] ?? "",
         state: json["state"],
         todosCompleted: json["todosCompleted"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -67,7 +67,7 @@ class User {
         "id": id,
         "nombre": nombre,
         "email": email,
-        "password": password,
+        "password": password ?? "",
         "state": state,
         "todosCompleted": todosCompleted,
         "createdAt": createdAt.toIso8601String(),
