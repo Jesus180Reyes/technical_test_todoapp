@@ -7,6 +7,7 @@ class NoTodosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.push("/add-todo"),
         child: const Icon(Icons.add),
