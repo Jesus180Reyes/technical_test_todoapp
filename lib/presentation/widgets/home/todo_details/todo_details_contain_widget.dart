@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:tecnical_test_todo_app/config/helpers/custom_dialog.dart';
 import 'package:tecnical_test_todo_app/entities/responses/todos_response.dart';
+import 'package:tecnical_test_todo_app/presentation/services/todos/todos_services.dart';
 
 import '../../widgets.dart';
 
@@ -16,7 +20,7 @@ class TodoDetailsContainWidget extends StatelessWidget {
       margin: const EdgeInsets.only(left: 20, top: 20),
       child: Column(
         children: [
-          _HeaderTitle(),
+          _HeaderTitle(todo: todo),
           _FormUpdateTodo(todo: todo),
           CustomPopupWidget(todo: todo),
         ],
@@ -31,6 +35,7 @@ class _FormUpdateTodo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final todoProvider = Provider.of<TodoServices>(context);
     final titleController = TextEditingController(text: todo.title);
     final descriptionController = TextEditingController(text: todo.description);
     return Container(
@@ -68,7 +73,14 @@ class _FormUpdateTodo extends StatelessWidget {
           ),
           CustomButtonWidget(
             title: "Actualizar Tarea",
-            onPressed: () {},
+            onPressed: () {
+              todoProvider.updateTodoContainById(
+                todoId: todo.id.toString(),
+                title: titleController.text.trim(),
+                description: descriptionController.text.trim(),
+              );
+              context.pushReplacement("/");
+            },
           ),
         ],
       ),
@@ -77,8 +89,12 @@ class _FormUpdateTodo extends StatelessWidget {
 }
 
 class _HeaderTitle extends StatelessWidget {
+  final Todo todo;
+
+  const _HeaderTitle({required this.todo});
   @override
   Widget build(BuildContext context) {
+    final todoProvider = Provider.of<TodoServices>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -90,7 +106,15 @@ class _HeaderTitle extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            todoProvider.deleteTodoById(todoId: todo.id.toString());
+            cuatomDialog(
+              context: context,
+              titulo: "TODO Eliminado",
+              subtitulo: "Se ha eleminida el TODO",
+            );
+            context.pushReplacement("/");
+          },
           icon: const Icon(
             Icons.delete_forever,
             size: 30,

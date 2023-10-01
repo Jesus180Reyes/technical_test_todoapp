@@ -1,16 +1,13 @@
 # tecnical_test_todo_app
 
-A new Flutter project.
+### To Run this project you will need to following the next steps:
 
-## Getting Started
+* **Step 1** Install dependencies using ```pub get```
+* **Step 2** Add your current IP on ```./lib/presentation/env/env.dart``` just change the IP on ```base_url``` var
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Notes:
+Remember Run the ```Server``` and ```Docker Container``` you will need to run first this things
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Enjoy it!!
